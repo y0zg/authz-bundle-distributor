@@ -1,0 +1,57 @@
+# Default values for authz-bundle-distributor.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+minReplicas: 2
+maxReplicas: 2
+targetCPUUtilizationPercentage: 50
+
+configloader:
+  aws_access_key_id: ''
+  aws_secret_access_key: ''
+  prefix: /NGSS/authz-bundle-distributor/ci/
+  file: configuration/ci.yaml
+
+image:
+  repository: 817276302724.dkr.ecr.eu-west-1.amazonaws.com/ngss/authz-bundle-distributor
+  tag: latest_master
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8080
+
+ambassador:
+  mapping:
+    prefix: '/svc/authz-bundle-distributor/'
+    connect_timeout_ms: 30000
+    timeout_ms: 70000
+
+livenessProbe:
+  path: /health
+  initialDelaySeconds: 30
+  periodSeconds: 90
+  timeoutSeconds: 1
+  failureThreshold: 3
+readinessProbe:
+  path: /health
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  timeoutSeconds: 1
+  failureThreshold: 1
+
+resources:
+  limits:
+   cpu: 400m
+   memory: 600Mi
+  requests:
+   cpu: 200m
+   memory: 300Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+metadata: {}

@@ -1,0 +1,8 @@
+minReplicas: 5
+maxReplicas: 20
+
+configloader:
+  prefix: /NGSS/authz-bundle-distributor/production/
+  file: configuration/production.yaml
+
+

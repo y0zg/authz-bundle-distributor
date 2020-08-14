@@ -1,0 +1,75 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+        "airbnb-typescript/base",
+        "plugin:@typescript-eslint/recommended",
+        "prettier/@typescript-eslint",
+        "plugin:prettier/recommended",
+        "plugin:eslint-comments/recommended"
+    ],
+    "rules": {
+        "max-len": [
+            "error",
+            120
+        ],
+        "indent": "off",
+        "class-methods-use-this": "off",
+        "@typescript-eslint/no-explicit-any": "error",
+        "eslint-comments/no-unused-disable": "error",
+        "eslint-comments/disable-enable-pair": "off",
+        "@typescript-eslint/no-unused-vars": [
+            "error",
+            {
+                "argsIgnorePattern": "^_.*$"
+            }
+        ],
+        "no-underscore-dangle": [
+            "error",
+            {
+                "allowAfterThis": true
+            }
+        ],
+        "no-unused-expressions": [
+            "error",
+            {
+                "allowShortCircuit": true
+            }
+        ],
+        "@typescript-eslint/no-unused-expressions": [
+            "error",
+            {
+                "allowShortCircuit": true
+            }
+        ],
+        "@typescript-eslint/explicit-function-return-type": [
+            "off",
+            {
+                "allowExpressions": true,
+                "allowTypedFunctionExpressions": true,
+                "allowHigherOrderFunctions": true
+            }
+        ],
+        "import/prefer-default-export": ["off"]
+    },
+    "overrides": [
+        {
+            "files": [
+                "*.test.ts"
+            ],
+            "rules": {
+                "@typescript-eslint/no-explicit-any": "off"
+            }
+        }
+    ],
+    "env": {
+        "browser": false,
+        "node": true,
+        "jest": true
+    },
+    "settings": {
+        "extensions": [
+            ".js",
+            ".ts"
+        ]
+    }
+}

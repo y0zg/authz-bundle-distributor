@@ -1,0 +1,4 @@
+configloader:
+  prefix: /NGSS/authz-bundle-distributor/qa/
+  file: configuration/qa.yaml
+

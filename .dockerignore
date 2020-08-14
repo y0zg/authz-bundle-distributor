@@ -1,0 +1,14 @@
+**/.git
+**/.env
+**/.gitignore
+**/*.swp
+**/node_modules
+**/dist
+Dockerfile*
+*docker-compose.yml
+charts/**
+Jenkinsfile
+Makefile
+**/terraform
+**/.terraform
+reports

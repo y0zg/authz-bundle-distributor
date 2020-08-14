@@ -1,0 +1,7 @@
+minReplicas: 3
+maxReplicas: 3
+
+configloader:
+  prefix: /NGSS/authz-bundle-distributor/staging/
+  file: configuration/staging.yaml
+

@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "lib": [
+            "dom",
+            "es5",
+            "es6"
+        ],
+        "target": "es5",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "outDir": "./dist",
+        "declaration": true,
+        "declarationDir": "./dist",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "alwaysStrict": true,
+        "strictNullChecks": true,
+        "sourceMap": true,
+        "types":["./src/types/interfaces", "node", "jest"],
+        "resolveJsonModule": true
+    },
+    "exclude": [
+        "node_modules",
+        "dist",
+        "src/**/**test.ts"
+    ]
+}

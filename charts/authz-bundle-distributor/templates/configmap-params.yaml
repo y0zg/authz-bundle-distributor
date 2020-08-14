@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "authz-bundle-distributor.fullname" . }}-params
+  labels:
+    {{- include "authz-bundle-distributor.standardLabels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": pre-install,pre-upgrade,pre-rollback
+    "helm.sh/hook-weight": "-2"
+    "helm.sh/hook-delete-policy": before-hook-creation
+data:
+  params.yaml: |
+{{- (tpl (.Values.configloader.file | .Files.Get) . ) | nindent 4 -}}
+

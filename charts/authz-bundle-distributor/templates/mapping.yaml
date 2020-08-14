@@ -1,0 +1,9 @@
+---
+apiVersion: getambassador.io/v1
+kind:  Mapping
+metadata:
+  name:  {{ template "authz-bundle-distributor.fullname" . }}
+spec:
+  service: http://{{ template "authz-bundle-distributor.fullname" . }}:{{ .Values.service.port }}
+  ambassador_id: {{ .Release.Namespace }}
+  {{- toYaml .Values.ambassador.mapping | nindent 2 }}

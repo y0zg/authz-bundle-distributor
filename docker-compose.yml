@@ -1,0 +1,42 @@
+version: '2.3'
+
+services:
+  authz-bundle-distributor:
+    image: 817276302724.dkr.ecr.eu-west-1.amazonaws.com/ngss/authz-bundle-distributor${DOCKER_TAG}
+    build:
+      context: .
+      args:
+        - AWS_ACCESS_KEY_ID
+        - AWS_SECRET_ACCESS_KEY
+        - ENGINE_API_KEY
+        - IMAGE_BUILD_TIMESTAMP
+        - IMAGE_VERSION
+        - IMAGE_GIT_COMMIT_SHA
+        - NPM_TOKEN
+      cache_from:
+        - 817276302724.dkr.ecr.eu-west-1.amazonaws.com/ngss/authz-bundle-distributor:latest
+        - 817276302724.dkr.ecr.eu-west-1.amazonaws.com/ngss/authz-bundle-distributor:latest_${GIT_BRANCH}
+        - 817276302724.dkr.ecr.eu-west-1.amazonaws.com/ngss/authz-bundle-distributor:${GIT_PREVIOUS_COMMIT}
+    ports:
+      - 8080
+    environment:
+      HONEYCOMB_DATASET: 'dummy'
+      HONEYCOMB_ENABLED: 'false'
+      HONEYCOMB_WRITE_KEY: 'dummy'
+      JWT_PUBLIC_KEY: '$COMPOSE_JWT_PUBLIC_KEY'
+      LOG_FORMAT_MORGAN: '$LOG_FORMAT_MORGAN'
+      LOG_LEVEL: 'info'
+      NEW_RELIC_APP_NAME: 'dummy'
+      NEW_RELIC_ENABLED: 'false'
+      NEW_RELIC_LICENSE_KEY: 'dummy'
+      NEW_RELIC_LOG: 'dummy'
+      NEW_RELIC_NO_CONFIG_FILE: 'dummy'
+      NPM_TOKEN: '$NPM_TOKEN'
+      SENTRY_DSN: ''
+      SENTRY_ENABLED: 'false'
+      SENTRY_ENVIRONMENT: 'ci'
+      SERVICE_JWT: '$CI_SERVICE_JWT'
+    volumes:	
+      - ./reports:/opt/authz-bundle-distributor/reports	
+
+
